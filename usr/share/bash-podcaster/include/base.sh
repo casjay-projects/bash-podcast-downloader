@@ -40,3 +40,4 @@ if [ ! -d "$PIDDIR" ] ; then mkdir -p "$PIDDIR"; fi
 if [ ! -d "$MEDIADIR" ]; then mkdir -p "$MEDIADIR" ; fi
 if [ ! -d /var/log/$PROGNAME ]; then ln -s $LOGDIR /var/log/$PROGNAME ; fi
 if [ ! -d /var/run/$PROGNAME ]; then ln -s $PIDDIR /var/run/$PROGNAME ; fi
+

@@ -10,10 +10,10 @@ echo "Last ran on $(date)" > "$LIBDIR"/$show.txt
 if [ "$IFISONLINE" -ne "0" ] ;then
 echo "This system does not seam to be online" 2>> $ERRORLOG > $LOGFILE
 echo -e "$HOST does not seem to be able to ping 8.8.8.8\nPossibly not online?" | mail -r $MAILFROM -s "$MAILSUB" $MAILRECIP
-exit 
+exit
 fi
 
-if [ -f $PIDFILE ] ; then 
+if [ -f $PIDFILE ] ; then
 echo -e "$show is already runnning with $PROGPID" > $PIDFILE
 exit 1
 else
@@ -25,8 +25,7 @@ echo "Last check was on $(date)" > "$MEDIADIR"/lastcheck.txt
 echo -e "$PROG started on $STARTDATE at $STARTTIME" > $LOGFILE 2>$ERRORLOG
 echo "Downloading "$title" to $MEDIADIR" >> $LOGFILE
 
-for i in {0240..0001}
-do
+for i in {0240..0001}; do
 find "$MEDIADIR" -size 0 -exec rm -f {} \;
 $WGETCMD "$TWITURL/video/"$show"/"$show""$i"/"$show""$i""$QHD"" -O "$MEDIADIR/$title - S01E$i.mp4"
 
@@ -88,3 +87,4 @@ rm -f $PIDFILE
 rm -f $ERRORLOG
 echo "exit = $?" >>$LOGFILE
 exit $?
+
